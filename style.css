@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.cards-caroucel{
+    width: 100%;
+
+    text-align: center;
+}
+.cards-caroucel > img{
+    width: 100%;
+}
+footer{
+    width: 100%;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+}
