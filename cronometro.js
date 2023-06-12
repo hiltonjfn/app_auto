@@ -40,6 +40,7 @@ function startTimer() {
   for (var i = 0; i < 3; i++) {
     var input = document.createElement('input');
     input.type = 'checkbox';
+    input.onchange = verificarCheckboxes;
     input.className = 'form-check-input col-2';
 
     // Adiciona os inputs à div
@@ -135,3 +136,38 @@ function alterarImagem(imagens, x) {
 }
 
 setInterval(chamarFuncoes, 1000); // Chama a função a cada 5 segundos (5000 milissegundos)
+
+
+function verificarCheckboxes() {
+  // Obtém os checkboxes dentro da div com o id "checkbox_div"
+  var checkboxes = document.querySelectorAll('#checkbox_div input[type="checkbox"]');
+
+  // Verifica se todos os checkboxes foram marcados
+  var todosMarcados = true;
+  checkboxes.forEach(function(checkbox) {
+    if (!checkbox.checked) {
+      todosMarcados = false;
+    }
+  });
+
+  // Exibe o modal caso todos os checkboxes tenham sido marcados
+  var modal = document.getElementById('modal');
+  if (todosMarcados) {
+    modal.style.display = 'block';
+  } else {
+    modal.style.display = 'none';
+  }
+}
+
+function fecharModal() {
+  var modal = document.getElementById('modal');
+  modal.style.display = 'none';
+}
+
+// Fecha o modal quando o usuário clica fora do modal
+window.onclick = function(event) {
+  var modal = document.getElementById('modal');
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+}
